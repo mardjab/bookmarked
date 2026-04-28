@@ -1,4 +1,4 @@
-# Shelf — product spec
+# Bookmarked — product spec
 
 ## Problem
 Three apps (Goodreads, Fable, Kindle) each do one thing well. This replaces all three

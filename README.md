@@ -1,16 +1,30 @@
-# React + Vite
+# Bookmarked
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal reading tracker — replaces Goodreads, Fable, and Kindle with a single app built around a smarter two-axis rating system, AI-powered recommendations, and Kindle Unlimited alerts no other tracker provides.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Next.js 14 App Router · TypeScript · Tailwind CSS
+- Supabase — Postgres, Auth (magic link), Realtime
+- Open Library API — book search + cover art
+- Claude API — recommendations (Phase 3)
 
-## React Compiler
+## Local development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Prerequisites:** Node 20+, Docker Desktop, Supabase CLI
 
-## Expanding the ESLint configuration
+```bash
+cp .env.example .env.local   # fill in NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY
+supabase start
+npm install
+npm run dev                  # http://localhost:3000
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Build phases
+
+| Phase | Scope | Status |
+|---|---|---|
+| 1 | Core tracker — auth, shelves, two-axis ratings, DNF logging, stats, Goodreads import | In progress |
+| 2 | Kindle alerts — KU availability + price drops via email | Planned |
+| 3 | AI recommendations — taste profile + Claude-generated recs | Planned |
+| 4 | New release radar — upcoming books matched to taste profile | Planned |

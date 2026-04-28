@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-# Shelf — book tracking app
+# Bookmarked — book tracking app
 
 Personal reading tracker. Web-first, single user, no social layer in v1.
 Full feature spec: see SPEC.md
