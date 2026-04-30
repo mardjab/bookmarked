@@ -1,5 +1,6 @@
 const OL_SEARCH = 'https://openlibrary.org/search.json'
 const OL_COVER = 'https://covers.openlibrary.org/b/id'
+const OL_WORKS = 'https://openlibrary.org/works'
 
 export interface OLBook {
   ol_id: string
@@ -45,4 +46,19 @@ export async function searchBooks(query: string): Promise<OLBook[]> {
     page_count: doc.number_of_pages_median ?? null,
     genre: (doc.subject ?? []).slice(0, 5),
   }))
+}
+
+// Fetches description from the Open Library works endpoint.
+// Called client-side on demand when the user opens a book detail view.
+export async function fetchBookDescription(ol_id: string): Promise<string | null> {
+  try {
+    const res = await fetch(`${OL_WORKS}/${ol_id}.json`)
+    if (!res.ok) return null
+    const data = await res.json()
+    const desc = data.description
+    if (!desc) return null
+    return typeof desc === 'string' ? desc : (desc.value ?? null)
+  } catch {
+    return null
+  }
 }
