@@ -40,7 +40,7 @@ export async function searchBooks(query: string): Promise<OLBook[]> {
     ol_id: doc.key.replace('/works/', ''),
     title: doc.title ?? 'Unknown title',
     author: doc.author_name?.[0] ?? 'Unknown author',
-    cover_url: doc.cover_i ? `${OL_COVER}/${doc.cover_i}-M.jpg` : null,
+    cover_url: doc.cover_i ? `${OL_COVER}/${doc.cover_i}-L.jpg` : null,
     published_year: doc.first_publish_year ?? null,
     page_count: doc.number_of_pages_median ?? null,
     genre: (doc.subject ?? []).slice(0, 5),
