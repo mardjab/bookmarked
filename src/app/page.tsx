@@ -1,7 +1,5 @@
+import { redirect } from 'next/navigation'
+
 export default function Home() {
-  return (
-    <main className="min-h-screen flex items-center justify-center">
-      <p className="text-neutral-400 text-sm">Loading your shelf…</p>
-    </main>
-  )
+  redirect('/shelf')
 }
